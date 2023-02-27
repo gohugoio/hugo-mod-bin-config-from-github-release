@@ -14,6 +14,7 @@ var (
 	repo            string
 	owner           string
 	tag             string
+	binName         string
 	targetDirectory string
 )
 
@@ -21,11 +22,12 @@ func main() {
 	flag.StringVar(&repo, "repo", "", "The repository name")
 	flag.StringVar(&owner, "owner", "", "The repository owner")
 	flag.StringVar(&tag, "tag", "", "The tag to download")
+	flag.StringVar(&binName, "bin-name", "", "The name of the binary")
 	flag.StringVar(&targetDirectory, "target-directory", "", "The target directory")
 
 	flag.Parse()
 
-	if repo == "" || owner == "" || tag == "" || targetDirectory == "" {
+	if repo == "" || owner == "" || tag == "" || targetDirectory == "" || binName == "" {
 		flag.PrintDefaults()
 		return
 	}
@@ -49,6 +51,7 @@ func main() {
 	m := module{
 		Type: "bin",
 		Params: map[string]interface{}{
+			"bin":            binName,
 			"github_release": release,
 		},
 	}
