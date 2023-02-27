@@ -1,2 +1,1 @@
-# hugo-mod-bin-config-from-github-release
-Just a simple main() Go program template.
+Create a Hugo Module Bin module config from a GitHub release.

@@ -47,8 +47,10 @@ func main() {
 	defer f.Close()
 
 	m := module{
-		Type:     "bin",
-		Manifest: release,
+		Type: "bin",
+		Params: map[string]interface{}{
+			"github_release": release,
+		},
 	}
 
 	// Encode m as JSON to f.
@@ -65,6 +67,6 @@ type config struct {
 }
 
 type module struct {
-	Type     string                          `json:"type"`
-	Manifest githubreleasedownloader.Release `json:"manifest"`
+	Type   string                 `json:"type"`
+	Params map[string]interface{} `json:"params,omitempty"`
 }
